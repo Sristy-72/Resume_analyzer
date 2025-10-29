@@ -1,0 +1,52 @@
+.loginpage{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background:rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /* for safari browser */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logincard{
+    /* width: 350px;
+    height: 120px; */
+    width: 30%;
+    background-color: black;
+    border-radius: 20px;
+    color: aliceblue;
+    padding: 20px;
+}
+.loginheading{
+    /* text-align: center; */
+    align-items: center;
+    display: flex;
+    justify-content:space-between;
+}
+.googleBtn{
+    width: 100%;
+    background-color: aliceblue;
+    border-radius: 20px;
+   box-sizing: border-box;
+    color: black;
+    /* text-align: center; */
+    cursor: pointer;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 22px;
+    display: flex;
+
+
+}
+@media screen and (max-width:780px){
+    .loginCard{
+        width:80%;
+    }
+}

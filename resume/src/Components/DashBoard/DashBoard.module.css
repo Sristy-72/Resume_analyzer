@@ -1,0 +1,188 @@
+.DashBoard{
+    flex: 0.8;
+    height: 100vh;
+    display: flex;
+    box-sizing: border-box;
+    overflow: auto;
+    justify-content: space-between;
+    padding: 50px;
+    background-color:whitesmoke;
+}
+.DashboardLeft{
+    padding: 30px;
+    height: 100%;
+    width: 70%;
+    height: fit-content;
+    box-sizing: border-box;
+    box-shadow: 0 10px 20px rgba(0, 0,0, 0.2);
+      background-color: #f4f6fa;
+      border-radius: 20px;
+}
+
+.firstheading{
+    font-size: 26px;
+    font-weight: 600;
+
+}
+.secondheading{
+    font-size: 52px;
+    font-weight: 500;
+}
+.importantcard{
+    padding: 15px 20px;
+    margin-top: 40px 0;
+    box-sizing: border-box;
+    width: 100%;
+    background-color:white ;
+    /* height: 100px; */
+    border-radius: 20px;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0,0, 0.1);
+}
+.impcontent{
+    padding:  0px 20px 0px 20px;
+    font-size: 15px;
+    word-spacing: 2px;
+    display: inline-block;
+}
+ .uploadresume{
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 30px;
+ }
+.text{
+   width:65%;
+   background-color: white;
+   border-radius: 30px;
+   padding: 15px 30px;
+   box-sizing: border-box;
+   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+   font-size: 22px;
+}
+.dashboardinputfield{
+    display:flex;
+    align-items: center;
+}
+.analyzeAIBtn{
+    font-size: 18px;
+    cursor:pointer;
+    padding: 20px 40px;
+    color: white;
+    font-weight: 700;
+    background: linear-gradient(90deg, #230d55,#3b47ce);
+    border: 3px solid black;
+    border-radius: 30px;
+}
+input{
+    display: none;
+}
+.jobDesc{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    box-sizing: border-box;
+}
+.textArea{
+    outline:none;
+    border-radius: 20px;
+    border: 2px solid rgb(14, 14, 97);
+    padding: 10px 20px;
+    width: 65%;
+    resize:none;
+    
+
+}
+.Analyzebtn{
+    width: 150px;
+    height: 150px;
+    border: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+   background: linear-gradient(90deg, #230d55,#3b47ce);
+   font-size: 22px;
+   color: white;
+   cursor: pointer;
+}
+.dashboardright{
+   width: 25%;
+   height: fit-content;
+   box-sizing: border-box;
+   background-color: #f4f6fa;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   gap: 20px;
+    
+}
+.rightcard{
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column ;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0, 0,0, 0.2);
+}
+.profileimg{
+    width: 85px;
+    height: 85px;
+    border-radius: 100%;
+    margin: 20px 0;
+
+}
+.rightcard{
+    font-size: 24px;
+    font-weight: 700;
+}
+.heading{
+    font-size: 20px;
+}
+.paragraph{
+    font-size: 18px;
+    font-weight: 500;
+}
+@media screen and (max-width:780px){
+    .DashBoard{
+        flex-direction: column;
+    }
+    .DashboardLeft{
+        width: 100%;
+
+    }
+    .firstheading{
+        font-size: 26px;
+    }
+    .dashboardright{
+        width: 100%;
+        margin-top: 30px;
+    }
+    .uploadresume{
+        flex-direction: column;
+    }
+    .text{
+        width: 100%;
+    }
+    .dashboardinputfield{
+        width: 100%;
+    }
+    .label{
+        width: 100%;
+        text-align: center;
+    }
+    .jobDesc{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .textArea{
+        width: 90%;
+    }
+    .Analyzebtn{
+        border-radius: 30px;
+        width: 100%;
+        height: fit-content;
+    }
+
+}

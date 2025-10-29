@@ -1,0 +1,34 @@
+.admin{
+    height: 100vh;
+     flex: 0.8;
+     overflow: auto;
+     padding: 50px;
+     background-color: whitesmoke;
+     justify-content: space-between;
+     box-sizing: border-box;
+}
+.cardblock{
+    width: 100%;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.card{
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0,0, 0.2);
+}
+.perheading{
+  text-align: center;
+    font-size: 28px;
+}
+@media screen and (max-width:780px) {
+    .admin{
+        padding: 20px;
+    }
+     .cardblock {
+        grid-template-columns: 1fr;
+     }
+}

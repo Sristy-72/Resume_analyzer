@@ -5,7 +5,7 @@ const cors = require('cors')
 const app= express();
 require("dotenv").config();
 const port=process.env.PORT||4000;
-// require('./conn');   // this will require conn.js 
+require('./conn');   // this will require conn.js 
 app.use(express.json());
 app.use(cors({
     credentials:true,

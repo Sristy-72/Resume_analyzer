@@ -1,7 +1,7 @@
 [build]
-  base = "resume"
+  base = "./"
   command = "npm run build"
-  publish = "resume/dist"
+  publish = "/dist"
 
 [[redirects]]
   from = "/*"

@@ -80,3 +80,12 @@ It provides a resume match score, personalized feedback, and improvement suggest
 ```bash
 git clone https://github.com/Sristy-72/Smart-Resume-Screening.git
 cd Smart-Resume-Screening
+
+---
+
+## Author
+
+**Sristy**  
+LinkedIn: [https://linkedin.com/in/sristy-720158266](https://linkedin.com/in/sristy-720158266)  
+GitHub: [https://github.com/Sristy-72](https://github.com/Sristy-72)
+

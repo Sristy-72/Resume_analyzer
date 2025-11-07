@@ -67,7 +67,7 @@ It provides a resume match score, personalized feedback, and improvement suggest
 ![Login Page](./loginpg.png)
 
 ### Dashboard Page
-![Dashboard Page](./dashboard.png)
+![Dashboard Page](./dashboardpg.png)
 
 ---
 

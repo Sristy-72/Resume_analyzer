@@ -17,7 +17,7 @@ app.use(cors({
 }))
 const UserRoutes= require('./Routes/user');
 const ResumeRoutes= require('./Routes/resume');
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 
 app.get("/",(_,res)=>{
     return res.send("Welcome to my server 😎")

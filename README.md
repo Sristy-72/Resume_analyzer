@@ -81,6 +81,7 @@ It provides a resume match score, personalized feedback, and improvement suggest
 git clone https://github.com/Sristy-72/Smart-Resume-Screening.git
 cd Smart-Resume-Screening
 
+```
 ---
 
 ## Author

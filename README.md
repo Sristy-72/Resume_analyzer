@@ -70,7 +70,7 @@ It provides a resume match score, personalized feedback, and improvement suggest
 ![Dashboard Page](./dashboardpg.png)
 
 ### Result after Analysis
-![Score](./score.png)
+![Score and Feedback](./score.png)
 
 ---
 

@@ -60,7 +60,22 @@ It provides a resume match score, personalized feedback, and improvement suggest
    Safely log out from the application.
 
 ---
+## Project Overview
 
+Below is a simple visual overview of how the Smart Resume Screening system works:
+
+```mermaid
+flowchart LR
+    A[User Login via Google OAuth] --> B[Upload Resume (PDF)]
+    B --> C[Enter Job Description]
+    C --> D[Send Data to Backend]
+    D --> E[AI Model (OpenAI API)]
+    E --> F[Generate Match Score & Feedback]
+    F --> G[Display Results on Dashboard]
+    G --> H[Store History in MongoDB]
+    H --> I[Admin Access - View All Resumes]
+
+---
 ## Screenshots
 
 ### Login Page

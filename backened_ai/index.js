@@ -9,7 +9,10 @@ require('./conn');   // this will require conn.js
 app.use(express.json());
 app.use(cors({
     credentials:true,
-    origin:"http://localhost:5173"
+   origin: [
+    "http://localhost:5173",
+    "https://my-resume-analyzer.netlify.app"
+  ]
 }))
 const UserRoutes= require('./Routes/user');
 const ResumeRoutes= require('./Routes/resume');

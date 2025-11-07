@@ -1,15 +1,10 @@
-let multer = require('multer');
-const path = require("path");
+const multer = require("multer");
 
-// Multer config
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),//Save all uploaded files inside the folder named uploads/
-  filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
-});
+const storage = multer.memoryStorage(); // ✅ Store file in memory, not disk
 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype === "application/pdf") cb(null, true);
-  else cb(new Error("Only PDF allowed"), false);
+  else cb(new Error("Only PDF files are allowed"), false);
 };
 
 exports.upload = multer({ storage, fileFilter });

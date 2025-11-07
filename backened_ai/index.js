@@ -2,8 +2,9 @@
 
 const express = require('express');
 const cors = require('cors')
-const app= express();
 require("dotenv").config();
+const app= express();
+
 const port=process.env.PORT||4000;
 require('./conn');   // this will require conn.js 
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use(cors({
 }))
 const UserRoutes= require('./Routes/user');
 const ResumeRoutes= require('./Routes/resume');
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.get("/",(_,res)=>{
     return res.send("Welcome to my server 😎")
@@ -25,3 +27,5 @@ app.use('/api/resume', ResumeRoutes)
 app.listen(port, ()=>{
     console.log("backened is working ")
 })
+
+module.exports = app;

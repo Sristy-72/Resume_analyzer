@@ -18,7 +18,9 @@ exports.addResume = async (req, res) => {
     const pdfPath = req.file.path;
 
     // Read and parse the uploaded resume PDF
-    const dataBuffer = fs.readFileSync(pdfPath);
+    //const dataBuffer = fs.readFileSync(pdfPath);
+    //const dataBuffer = await fs.promises.readFile(pdfPath);
+    const dataBuffer = req.file.buffer;
     const pdfData = await pdfParse(dataBuffer);
 
     //  Build your prompt as before
@@ -79,7 +81,8 @@ exports.addResume = async (req, res) => {
       feedback: reason,
     });
     await newResume.save();
-    fs.unlinkSync(pdfPath);
+    //fs.unlinkSync(pdfPath);
+    //await fs.promises.unlink(pdfPath);
     return res.json({
       score:score,
       success: true,

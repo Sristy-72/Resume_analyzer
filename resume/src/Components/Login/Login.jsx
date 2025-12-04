@@ -94,7 +94,9 @@ const Login = () => {
       setLogin(true);
 
       // Navigate to dashboard
-      navigate("/dashboard");
+     // navigate("/dashboard");
+     navigate("/dashboard", { replace: true });
+
     } catch (err) {
       console.error(err);
       alert("Something went wrong during login.");

@@ -17,7 +17,8 @@ const Sidebar = () => {
   localStorage.clear();
   setLogin(false);
   setUserInfo(null);
-  navigate('/')
+  navigate("/", { replace: true });
+
  }
 
   return (

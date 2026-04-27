@@ -145,6 +145,7 @@ input{
     font-weight: 500;
 }
 @media screen and (max-width:780px){
+   
     .DashBoard{
         flex-direction: column;
     }
@@ -185,4 +186,37 @@ input{
         height: fit-content;
     }
 
+}
+.circleWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: conic-gradient(
+    #4caf50 var(--degree),
+    #e0e0e0 0deg
+  );
+  transition: 0.6s ease;
+}
+
+.innerCircle {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 22px;
 }

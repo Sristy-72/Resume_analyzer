@@ -10,16 +10,19 @@ const History = () => {
   const[data, setData]= useState([])
   const [loader, setLoader]= useState(false);
   
-  const {userInfo}= useContext(AuthContext)
+ const {userInfo}= useContext(AuthContext)
 
  useEffect (()=>{
+  if (!userInfo?._id) {
+    return;
+  }
+
   const fetchUserData= async()=>{
     setLoader(true)
     try{
      const results = await axios.get(`api/resume/${userInfo?._id}`)
-     console.log(results)
      setData(results.data.resumes)
-    }catch{
+    }catch(err){
       console.log(err)
       alert("something went wrong")
     }finally{
@@ -27,7 +30,7 @@ const History = () => {
     }
   }
   fetchUserData()
- }, [])
+ }, [userInfo?._id])
 
   return (
     <div className={styles.history}>
@@ -37,6 +40,7 @@ const History = () => {
           <Skeleton  variant="rectangular" sx={{borderRadius:"20px"}} width={280} height={280}/>
           <Skeleton  variant="rectangular" sx={{borderRadius:"20px"}} width={280} height={280}/>
           <Skeleton  variant="rectangular" sx={{borderRadius:"20px"}} width={280} height={280}/>
+           <Skeleton  variant="rectangular" sx={{borderRadius:"20px"}} width={280} height={280}/>
          
           </>
         }
@@ -48,7 +52,7 @@ const History = () => {
               <div key={item._id} className={styles.card}> 
           <div className={styles.perheading}>{item.score}%</div>
           {/* <h3>Frontened Developer</h3> */}
-          <p>Resume Name:{item.resume_name}</p>
+          <p>Resume Name: {item.resume_name}</p>
            <p>{item.feedback}</p>
            <p>Date:{item.updatedAt.slice(0,10)}</p>
         </div>

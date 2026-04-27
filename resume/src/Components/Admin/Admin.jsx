@@ -10,6 +10,10 @@ const Admin = () => {
   const { userInfo } = useContext(AuthContext);
 
   useEffect(() => {
+    if (!userInfo?._id) {
+      return;
+    }
+
     const fetchAllData = async () => {
       setLoader(true);
       try {
@@ -30,7 +34,7 @@ const Admin = () => {
       }
     };
     fetchAllData();
-  }, []);
+  }, [userInfo?._id, userInfo?.role]);
   return (
     <div className={styles.admin}>
       <div className={styles.cardblock}>
@@ -62,7 +66,6 @@ const Admin = () => {
           return (
             <div key={item._id} className={styles.card}>
               <h2> {item?.user?.name}</h2>
-
               <h3>Score:{item.score}</h3>
               <p style={{ color: "blue" }}>{item?.user?.email}</p>
               <div className={styles.perheading}>{item?.resume_name}</div>

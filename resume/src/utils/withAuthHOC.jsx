@@ -26,26 +26,17 @@
 
 // export default WithAuthHOC;
 
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { AuthContext } from "./AuthContext";
 
 const WithAuthHOC = (WrappedComponent) => {
   return (props) => {
-    const navigate = useNavigate();
+    const { isLogin } = useContext(AuthContext);
 
-    // INSTANT AUTH CHECK (no delay)
-    const isLogin = localStorage.getItem("isLogin");
     if (!isLogin) {
-      navigate("/", { replace: true });
-      return null; // prevent rendering component before redirect
+      return <Navigate to="/" replace />;
     }
-
-    // EXTRA SAFETY CHECK INSIDE EFFECT (rarely needed)
-    useEffect(() => {
-      if (!localStorage.getItem("isLogin")) {
-        navigate("/", { replace: true });
-      }
-    }, [navigate]);
 
     return <WrappedComponent {...props} />;
   };

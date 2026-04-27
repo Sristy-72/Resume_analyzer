@@ -25,21 +25,79 @@ exports.addResume = async (req, res) => {
 
     //  Build your prompt as before
     const prompt = `
-      You are a resume screening assistant.
-      Compare the following resume text with the provided Job Description (JD) 
-      and give a match score (0-100) 
-      
+You are an advanced AI Resume Analyzer.
 
-      Resume:
-      ${pdfData.text}
+Your job is to strictly evaluate whether the uploaded content is a valid resume and then compare it with the provided Job Description (JD).
 
-      Job Description:
-      ${job_desc}
+----------------------
+VALIDATION STEP (VERY IMPORTANT)
+----------------------
+First, check if the uploaded text is actually a resume.
 
-      Return the score and a brief explanation in this format:
-      Score: XX
-      Reason: ...
-    `;
+A valid resume MUST contain most of these:
+- Candidate name or contact info
+- Skills / Technical Skills
+- Education
+- Work Experience / Projects
+
+If the content does NOT look like a resume (e.g., random text, notes, article, book content, empty, or unrelated document), then STOP and return ONLY:
+
+Invalid Document: The uploaded file is not a valid resume.
+
+Do NOT continue further in that case.
+
+----------------------
+ANALYSIS STEP
+----------------------
+If it IS a valid resume, then:
+
+1. Compare resume with Job Description
+2. Evaluate based on:
+   - Skills match (most important)
+   - Experience relevance
+   - Projects relevance
+   - Keywords / ATS compatibility
+
+3. Provide:
+   - Match Score (0–100)
+   - Missing Skills (important ones from JD not in resume)
+   - Strengths
+   - Suggestions to improve
+
+----------------------
+INPUT
+----------------------
+Resume:
+${pdfData.text}
+
+Job Description:
+${job_desc}
+
+----------------------
+OUTPUT FORMAT (STRICT)
+----------------------
+
+If invalid:
+Invalid Document: The uploaded file is not a valid resume.
+
+If valid:
+Score: XX
+
+Strengths:
+- ...
+- ...
+
+Missing Skills:
+- ...
+- ...
+
+Suggestions:
+- ...
+- ...
+
+Reason:
+Short explanation of how the score was calculated.
+`;
 
     //  NEW Chat API call
     const response = await cohere.chat({

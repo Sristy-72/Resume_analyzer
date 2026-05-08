@@ -17,7 +17,7 @@ function App() {
       {!hideNavbar && <Navbar />}
       <main className='AppMain' >
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path ="/home" element ={<Home />} />
         {/* upload section same as analyze  */} 
         

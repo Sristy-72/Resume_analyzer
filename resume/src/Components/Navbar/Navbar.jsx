@@ -34,7 +34,7 @@ const Navbar = () => {
     if (!isLogin) {
       event.preventDefault();
       alert("Please login first");
-      navigate("/")
+      navigate("/login")
     }
   };
 

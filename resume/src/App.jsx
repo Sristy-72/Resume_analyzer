@@ -10,14 +10,15 @@ import Home from './Components/Home/Home';
 
 function App() {
   const location = useLocation();
-  const hideNavbar = location.pathname === "/";
+  const hideNavbar = location.pathname === "/login";
 
   return (
     <div className='App'>
       {!hideNavbar && <Navbar />}
       <main className='AppMain' >
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path ="/home" element ={<Home />} />
         {/* upload section same as analyze  */} 
         

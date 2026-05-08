@@ -10,7 +10,7 @@ import Home from './Components/Home/Home';
 
 function App() {
   const location = useLocation();
-  const hideNavbar = location.pathname === "/login";
+  const hideNavbar = location.pathname === "/";
 
   return (
     <div className='App'>

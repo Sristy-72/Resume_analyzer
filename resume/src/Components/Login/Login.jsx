@@ -34,7 +34,7 @@ const Login = () => {
 
       setUserInfo(basicUserInfo);
       setLogin(true);
-      navigate("/dashboard", { replace: true });
+      navigate("/analyze", { replace: true });
 
       const response = await axios.post("/api/user", basicUserInfo);
       setUserInfo(response.data.user);

@@ -3,21 +3,24 @@
      flex: 0.8;
      overflow: auto;
      padding: 50px;
-     background-color: whitesmoke;
+     background: linear-gradient(135deg, #09090f, #14142b, #1f1147);
      box-sizing: border-box;
 }
 .cardblock{
     width: 100%;
     display: grid;
     gap: 20px;
-    grid-template-columns: 1fr 1fr 1fr ;
+    
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
 }
 .card{
     border-radius: 20px;
     padding: 20px;
     box-sizing: border-box;
     width: 100%;
+    background: rgba(255, 255, 255, 0.06);
     box-shadow: 0 10px 20px rgba(0, 0,0, 0.2);
+    color: rgba(203, 213, 245, 0.9);
 }
 .perheading{
   text-align: center;

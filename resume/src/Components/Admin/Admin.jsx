@@ -42,23 +42,29 @@ const Admin = () => {
           <>
             <Skeleton
               variant="rectangular"
-              sx={{ borderRadius: "20px" }}
-              width={280}
-              height={280}
+              sx={{ borderRadius: "20px" ,bgcolor: "rgba(255, 255, 255, 0.06)"}}
+              width={320}
+              height={480}
             />
 
             <Skeleton
               variant="rectangular"
-              sx={{ borderRadius: "20px" }}
-              width={280}
-              height={280}
+              sx={{ borderRadius: "20px",bgcolor: "rgba(255, 255, 255, 0.06)" }}
+              width={320}
+              height={480}
             />
 
             <Skeleton
               variant="rectangular"
-              sx={{ borderRadius: "20px" }}
-              width={280}
-              height={280}
+              sx={{ borderRadius: "20px",bgcolor: "rgba(255, 255, 255, 0.06)" }}
+              width={320}
+              height={480}
+            />
+            <Skeleton
+              variant="rectangular"
+              sx={{ borderRadius: "20px",bgcolor: "rgba(255, 255, 255, 0.06)" }}
+              width={320}
+              height={480}
             />
           </>
         )}
@@ -67,7 +73,7 @@ const Admin = () => {
             <div key={item._id} className={styles.card}>
               <h2> {item?.user?.name}</h2>
               <h3>Score:{item.score}</h3>
-              <p style={{ color: "blue" }}>{item?.user?.email}</p>
+              <p style={{ color: "rgba(137, 157, 221, 0.9)" }}>{item?.user?.email}</p>
               <div className={styles.perheading}>{item?.resume_name}</div>
 
               <p>{item.feedback}</p>

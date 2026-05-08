@@ -12,6 +12,46 @@ const cohere = new CohereClientV2({
   token: process.env.COHERE_API_KEY,
 });
 
+// A tiny "remove-markdown"-style sanitizer to keep Cohere markdown (**, *, backticks, etc.)
+// from showing up as raw characters in the UI.
+function stripMarkdown(text) {
+  if (!text) return "";
+
+  let out = String(text);
+
+  // Remove fenced code blocks but keep the inner code
+  out = out.replace(/```[\s\S]*?```/g, (block) => block.replace(/```/g, ""));
+
+  // Inline code
+  out = out.replace(/`([^`]+)`/g, "$1");
+
+  // Images/links
+  out = out.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, "$1");
+  out = out.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1");
+
+  // Headings and blockquotes
+  out = out.replace(/^\s{0,3}#{1,6}\s+/gm, "");
+  out = out.replace(/^\s{0,3}>\s?/gm, "");
+
+  // Emphasis markers
+  out = out.replace(/\*\*([^*]+)\*\*/g, "$1");
+  out = out.replace(/\*([^*\n]+)\*/g, "$1");
+  out = out.replace(/__([^_]+)__/g, "$1");
+  out = out.replace(/_([^_\n]+)_/g, "$1");
+
+  // Strip list leaders (similar to remove-markdown's default `stripListLeaders: true`)
+  out = out.replace(/^(\s*)(?:[*+-])\s+/gm, "$1");
+  out = out.replace(/^(\s*)\d+\.\s+/gm, "$1");
+
+  // Any leftover repeated asterisks used for emphasis
+  out = out.replace(/\*{2,}/g, "");
+
+  // Whitespace normalization
+  out = out.replace(/\r\n/g, "\n").replace(/[ \t]+\n/g, "\n");
+
+  return out.trim();
+}
+
 exports.addResume = async (req, res) => {
   try {
     const { job_desc, user } = req.body;
@@ -25,78 +65,17 @@ exports.addResume = async (req, res) => {
 
     //  Build your prompt as before
     const prompt = `
-You are an advanced AI Resume Analyzer.
+Generate a JSON object with exactly these fields:
+- score: integer (0-100)
+- feedback: string (plain text only; no markdown; do not use *, **, _, or backticks)
 
-Your job is to strictly evaluate whether the uploaded content is a valid resume and then compare it with the provided Job Description (JD).
+Compare the following resume text with the provided Job Description (JD) and produce the JSON.
 
-----------------------
-VALIDATION STEP (VERY IMPORTANT)
-----------------------
-First, check if the uploaded text is actually a resume.
-
-A valid resume MUST contain most of these:
-- Candidate name or contact info
-- Skills / Technical Skills
-- Education
-- Work Experience / Projects
-
-If the content does NOT look like a resume (e.g., random text, notes, article, book content, empty, or unrelated document), then STOP and return ONLY:
-
-Invalid Document: The uploaded file is not a valid resume.
-
-Do NOT continue further in that case.
-
-----------------------
-ANALYSIS STEP
-----------------------
-If it IS a valid resume, then:
-
-1. Compare resume with Job Description
-2. Evaluate based on:
-   - Skills match (most important)
-   - Experience relevance
-   - Projects relevance
-   - Keywords / ATS compatibility
-
-3. Provide:
-   - Match Score (0–100)
-   - Missing Skills (important ones from JD not in resume)
-   - Strengths
-   - Suggestions to improve
-
-----------------------
-INPUT
-----------------------
 Resume:
 ${pdfData.text}
 
 Job Description:
 ${job_desc}
-
-----------------------
-OUTPUT FORMAT (STRICT)
-----------------------
-
-If invalid:
-Invalid Document: The uploaded file is not a valid resume.
-
-If valid:
-Score: XX
-
-Strengths:
-- ...
-- ...
-
-Missing Skills:
-- ...
-- ...
-
-Suggestions:
-- ...
-- ...
-
-Reason:
-Short explanation of how the score was calculated.
 `;
 
     //  NEW Chat API call
@@ -109,34 +88,59 @@ Short explanation of how the score was calculated.
         },
         { role: "user", content: prompt },
       ],
-      temperature: 0.7,
+      response_format: {
+        type: "json_object",
+        schema: {
+          type: "object",
+          properties: {
+            score: { type: "integer" },
+            feedback: { type: "string" },
+          },
+          required: ["score", "feedback"],
+        },
+      },
+      temperature: 0,
     });
 
     //  Extract the text properly
     let result = response.message.content[0].text;
     console.log(result);
 
-    //  Optional: send back to client
-    // res.json({
-    //   success: true,
-    //   scoreFeedback: result,
-    // });
-    const scoreMatch = result.match(
-      /(?:Score|Match Score)\s*[:\-]?\s*(\d{1,3})/i
-    );
-    const reasonMatch = result.match(
-      /(?:Reason|Feedback)\s*[:\-]?\s*([\s\S]*)/i
-    );
+    let score = null;
+    let feedback = "";
 
-    const score = scoreMatch ? parseInt(scoreMatch[1], 10) : null;
-    const reason = reasonMatch ? reasonMatch[1].trim() : null;
+    try {
+      const parsed = JSON.parse(result);
+      const parsedScore =
+        typeof parsed?.score === "number" ? parsed.score : Number(parsed?.score);
+      score = Number.isFinite(parsedScore) ? parsedScore : null;
+      feedback =
+        typeof parsed?.feedback === "string"
+          ? parsed.feedback
+          : parsed?.feedback == null
+            ? ""
+            : String(parsed.feedback);
+    } catch (e) {
+      // Fallback if the model output wasn't JSON for any reason.
+      const scoreMatch = result.match(
+        /(?:Score|Match Score)\s*[:\-]?\s*(\d{1,3})/i
+      );
+      const reasonMatch = result.match(
+        /(?:Reason|Feedback)\s*[:\-]?\s*([\s\S]*)/i
+      );
+
+      score = scoreMatch ? parseInt(scoreMatch[1], 10) : null;
+      feedback = reasonMatch ? reasonMatch[1].trim() : result;
+    }
+
+    const cleanedFeedback = stripMarkdown(feedback);
     //  console.log(req.file)
     const newResume = new ResumeModel({
       user,
       resume_name: req.file.originalname,
       job_desc,
       score,
-      feedback: reason,
+      feedback: cleanedFeedback,
     });
     await newResume.save();
     //fs.unlinkSync(pdfPath);
@@ -144,7 +148,7 @@ Short explanation of how the score was calculated.
     return res.json({
       score:score,
       success: true,
-      feedback: result,
+      feedback: cleanedFeedback,
     });
   } catch (err) {
     console.error(err);

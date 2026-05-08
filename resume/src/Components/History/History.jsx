@@ -37,10 +37,10 @@ const History = () => {
       <div className={styles.cardblock}>
         {
           loader && <>
-          <Skeleton  variant="rectangular" sx={{borderRadius:"20px"}} width={280} height={280}/>
-          <Skeleton  variant="rectangular" sx={{borderRadius:"20px"}} width={280} height={280}/>
-          <Skeleton  variant="rectangular" sx={{borderRadius:"20px"}} width={280} height={280}/>
-           <Skeleton  variant="rectangular" sx={{borderRadius:"20px"}} width={280} height={280}/>
+          <Skeleton  variant="rectangular" sx={{borderRadius:"20px" ,bgcolor: "rgba(255, 255, 255, 0.06)"}} width={320} height={480} />
+          <Skeleton  variant="rectangular" sx={{borderRadius:"20px" ,bgcolor: "rgba(255, 255, 255, 0.06)"}} width={320} height={480}/>
+          <Skeleton  variant="rectangular" sx={{borderRadius:"20px" ,bgcolor: "rgba(255, 255, 255, 0.06)"}} width={320} height={480}/>
+           <Skeleton  variant="rectangular" sx={{borderRadius:"20px" ,bgcolor: "rgba(255, 255, 255, 0.06)"}} width={320} height={480}/>
          
           </>
         }

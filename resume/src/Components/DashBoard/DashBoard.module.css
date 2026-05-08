@@ -1,222 +1,274 @@
-.DashBoard{
-    flex: 0.8;
-    height: 100vh;
-    display: flex;
-    box-sizing: border-box;
-    overflow: auto;
-    justify-content: space-between;
-    padding: 50px;
-    background-color:whitesmoke;
-}
-.DashboardLeft{
-    padding: 30px;
-    height: 100%;
-    width: 70%;
-    height: fit-content;
-    box-sizing: border-box;
-    box-shadow: 0 10px 20px rgba(0, 0,0, 0.2);
-      background-color: #f4f6fa;
-      border-radius: 20px;
-}
 
-.firstheading{
-    font-size: 26px;
-    font-weight: 600;
 
-}
-.secondheading{
-    font-size: 52px;
-    font-weight: 500;
-}
-.importantcard{
-    padding: 15px 20px;
-    margin-top: 40px 0;
-    box-sizing: border-box;
-    width: 100%;
-    background-color:white ;
-    /* height: 100px; */
-    border-radius: 20px;
-    font-size: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0,0, 0.1);
-}
-.impcontent{
-    padding:  0px 20px 0px 20px;
-    font-size: 15px;
-    word-spacing: 2px;
-    display: inline-block;
-}
- .uploadresume{
+.DashBoard {
+  min-height: 100vh;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #09090f, #14142b, #1f1147);
   display: flex;
-  justify-content: space-between;
-  gap: 30px;
-  margin-top: 30px;
- }
-.text{
-   width:65%;
-   background-color: white;
-   border-radius: 30px;
-   padding: 15px 30px;
-   box-sizing: border-box;
-   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-   font-size: 22px;
+  flex-direction: column;
+  align-items: center;
 }
-.dashboardinputfield{
-    display:flex;
-    align-items: center;
-}
-.analyzeAIBtn{
-    font-size: 18px;
-    cursor:pointer;
-    padding: 20px 40px;
-    color: white;
-    font-weight: 700;
-    background: linear-gradient(90deg, #230d55,#3b47ce);
-    border: 3px solid black;
-    border-radius: 30px;
-}
-input{
-    display: none;
-}
-.jobDesc{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-    box-sizing: border-box;
-}
-.textArea{
-    outline:none;
-    border-radius: 20px;
-    border: 2px solid rgb(14, 14, 97);
-    padding: 10px 20px;
-    width: 65%;
-    resize:none;
-    
+.heroSection {
+  text-align: center;
 
+  margin-bottom: 40px;
 }
-.Analyzebtn{
-    width: 150px;
-    height: 150px;
-    border: 3px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-   background: linear-gradient(90deg, #230d55,#3b47ce);
-   font-size: 22px;
-   color: white;
-   cursor: pointer;
-}
-.dashboardright{
-   width: 25%;
-   height: fit-content;
-   box-sizing: border-box;
-   background-color: #f4f6fa;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   gap: 20px;
-    
-}
-.rightcard{
-    border-radius: 20px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column ;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 20px rgba(0, 0,0, 0.2);
-}
-.profileimg{
-    width: 85px;
-    height: 85px;
-    border-radius: 100%;
-    margin: 20px 0;
 
+.firstheading {
+  font-size: 64px;
+  font-weight: 700;
+
+  color: white;
+
+  margin-bottom: 15px;
 }
-.rightcard{
-    font-size: 24px;
-    font-weight: 700;
+
+.secondheading {
+  font-size: 20px;
+
+  color: #cbd5e1;
+
+  max-width: 700px;
 }
-.heading{
-    font-size: 20px;
+.uploadBox {
+  width: 100%;
+  max-width: 850px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(12px);
+
+  border-radius: 30px;
+
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 25px;
 }
-.paragraph{
-    font-size: 18px;
+.uploadHeading {
+  font-size: 36px;
+  font-weight: 700;
+
+  color: white;
+
+  text-align: center;
+}
+.note {
+  text-align: center;
+
+  color: #cbd5e1;
+
+  font-size: 15px;
+}
+.note p{
+    color: #93c5fd;
+
+    font-size: 14px;
+
+    margin-top: 15px;
+
     font-weight: 500;
 }
-@media screen and (max-width:780px){
-   
-    .DashBoard{
-        flex-direction: column;
-    }
-    .DashboardLeft{
-        width: 100%;
+.uploadCard {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
 
-    }
-    .firstheading{
-        font-size: 26px;
-    }
-    .dashboardright{
-        width: 100%;
-        margin-top: 30px;
-    }
-    .uploadresume{
-        flex-direction: column;
-    }
-    .text{
-        width: 100%;
-    }
-    .dashboardinputfield{
-        width: 100%;
-    }
-    .label{
-        width: 100%;
-        text-align: center;
-    }
-    .jobDesc{
-        flex-direction: column;
-        gap: 20px;
-    }
-    .textArea{
-        width: 90%;
-    }
-    .Analyzebtn{
-        border-radius: 30px;
-        width: 100%;
-        height: fit-content;
-    }
+  border-radius: 24px;
 
+  padding: 40px 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
 }
-.circleWrapper {
+
+.uploadCard:hover {
+  border-color: #6366f1;
+
+  transform: translateY(-2px);
+}
+.uploadIcon {
+  font-size: 52px;
+
+  margin-bottom: 10px;
+}
+.uploadCard h3 {
+  color: white;
+
+  font-size: 24px;
+
+  margin-bottom: 10px;
+}
+
+.uploadCard p {
+  color: #d1d5db;
+}
+input {
+  display: none;
+}
+.textArea {
+  width: 100%;
+
+  min-height: 220px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  color: white;
+
+  font-size: 16px;
+
+  resize: none;
+
+  outline: none;
+}
+
+.textArea::placeholder {
+  color: #94a3b8;
+}
+.Analyzebtn {
+  padding: 18px;
+
+  border: none;
+
+  border-radius: 18px;
+
+  background: linear-gradient(90deg, #7c3aed, #2563eb);
+
+  color: white;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.Analyzebtn:hover {
+  transform: translateY(-2px);
+}
+.resultDashboard {
+  width: 100%;
+
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 20px 0;
-}
 
+  margin-top: 50px;
+}
+.resultCard {
+  width: 100%;
+  max-width: 850px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(12px);
+
+  border-radius: 30px;
+
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+.resultText {
+  font-size: 36px;
+  font-weight: 700;
+
+  color: white;
+
+  margin-bottom: 30px;
+}
 .circle {
-  width: 140px;
-  height: 140px;
+  width: 180px;
+  height: 180px;
+
   border-radius: 50%;
+
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background: conic-gradient(
-    #4caf50 var(--degree),
-    #e0e0e0 0deg
-  );
-  transition: 0.6s ease;
+  transition: 0.5s ease;
+}
+.innerCircle {
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  background: #0f172a;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+
+  font-size: 32px;
+  font-weight: 700;
+}
+.feedback {
+  margin-top: 40px;
+
+  width: 100%;
 }
 
-.innerCircle {
-  width: 100px;
-  height: 100px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  font-size: 22px;
+.heading {
+  color: white;
+
+  font-size: 24px;
+
+  margin-bottom: 15px;
+}
+
+.paragraph {
+  color: #d1d5db;
+
+  line-height: 1.8;
+
+  font-size: 16px;
+}
+
+.feedbackSection{
+    width: 100%;
+
+    margin-top: 40px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+}
+.resultBox{
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 20px;
+
+    padding: 24px;
+}
+.description{
+    white-space: pre-wrap;
+    color: white;
 }

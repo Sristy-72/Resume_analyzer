@@ -3,7 +3,7 @@
      flex: 0.8;
      overflow: auto;
      padding: 50px;
-     background-color: whitesmoke;
+     background: linear-gradient(135deg, #09090f, #14142b, #1f1147);
      justify-content: space-between;
      box-sizing: border-box;
 }
@@ -19,7 +19,9 @@
     box-sizing: border-box;
     width: 100%;
     box-shadow: 0 10px 20px rgba(0, 0,0, 0.2);
+    background: rgba(255, 255, 255, 0.06);
     overflow: hidden;
+    color: rgba(203, 213, 245, 0.9);
 }
 .perheading{
   text-align: center;

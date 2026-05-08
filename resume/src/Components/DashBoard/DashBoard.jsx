@@ -60,103 +60,128 @@ const getColor = (score) => {
   return "#f44336";
 };
 
-  return (
-    <div className={styles.DashBoard}>
-      <div className={styles.DashboardLeft}>
-        <div className={styles.headings}>
-          <div className={styles.firstheading}> Smart Resume Screening</div>
-          <div className={styles.secondheading}> Resume Match Score</div>
-        </div>
-        <div className={styles.importantcard}>
-          <div> 🔔Important Instructions:</div>
-          <div className={styles.impcontent}>
-            <p>
-              {" "}
-              📄 Please paste the complete job description in the "Job
-              Description" field before submitting .
-            </p>
-            <p> 📎Only PDF format(.pdf) resumes are accepted</p>
-          </div>
-        </div>
+ return (
+  <div className={styles.DashBoard}>
 
-        <div className={styles.uploadresume}>
-          <div className={styles.text}> {uploadFiletext}</div>
-          <div className={styles.dashboardinputfield}>
-            <label htmlFor="inputField" className={styles.analyzeAIBtn}>
-              {" "}
-              Upload Resume
-            </label>
-            <input
-              type="file"
-              accept="application/pdf"
-              id="inputField"
-              onChange={handleOnChangeFile}
-            />
-          </div>
-        </div>
-        <div className={styles.jobDesc}>
-          <textarea
-            value={jobDesc}
-            onChange={(e) => {
-              setJobDesc(e.target.value);
-            }}
-            className={styles.textArea}
-            placeholder="Paste Your Job Description"
-            rows={10}
-            cols={50}
-          ></textarea>
-          <div onClick={handleUpload} className={styles.Analyzebtn}>
-            {" "}
-            Analyze
-          </div>
-        </div>
-      </div>
-      <div className={styles.dashboardright}>
-        <div className={styles.rightcard}>
-          <div>Analyze with AI</div>
-          {userInfo?.photoUrl && (
-            <img
-              className={styles.profileimg}
-              src={userInfo.photoUrl}
-              alt={userInfo?.name || "User"}
-            />
-          )}
-          <h3>{userInfo?.name || "Loading profile..."}</h3>
-        </div>
+    <div className={styles.heroSection}>
 
-        {result && (
-          <div className={styles.rightcard}>
-            <div>Result</div>
+      <h1 className={styles.firstheading}>
+        Smart Resume Analyzer
+      </h1>
 
-            <div className={styles.circleWrapper}>
-              <div
-                className={styles.circle}
-                style={{
-                 background: `conic-gradient(${getColor(result.score)} ${result.score * 3.6}deg, #e0e0e0 0deg)`
-                }}
-              >
-                <div className={styles.innerCircle}>{result.score}%</div>
-              </div>
-            </div>
+      <p className={styles.secondheading}>
+        Upload your resume and get instant ATS score with AI feedback
+      </p>
 
-            <div className={styles.feedback}>
-              <h4 className={styles.heading}>Feedback</h4>
-              <p className={styles.paragraph}>{result?.feedback}</p>
-            </div>
-          </div>
-        )}
-
-        {loading && (
-          <Skeleton
-            variant="rectangular"
-            sx={{ borderRadius: "20px" }}
-            width={280}
-            height={280}
-          />
-        )}
-      </div>
     </div>
-  );
+
+    <div className={styles.uploadBox}>
+
+      <div className={styles.uploadHeading}>
+        Upload Resume
+      </div>
+
+      <div className={styles.note}>
+        📌 Upload PDF resume and paste complete job description for best ATS analysis.
+      </div>
+
+      <label
+        htmlFor="inputField"
+        className={styles.uploadCard}
+      >
+
+        <div className={styles.uploadIcon}>
+          📄
+        </div>
+
+        <h3>Browse Resume</h3>
+
+        <p>{uploadFiletext}</p>
+
+      </label>
+
+      <input
+        type="file"
+        accept="application/pdf"
+        id="inputField"
+        onChange={handleOnChangeFile}
+      />
+
+      <textarea
+        value={jobDesc}
+        onChange={(e) => {
+          setJobDesc(e.target.value);
+        }}
+        className={styles.textArea}
+        placeholder="Paste complete job description here..."
+      />
+
+      <button
+        onClick={handleUpload}
+        className={styles.Analyzebtn}
+      >
+        Analyze Resume
+      </button>
+
+    </div>
+
+    <div className={styles.resultDashboard}>
+
+      {loading && (
+        <Skeleton
+          variant="rectangular"
+          sx={{
+            borderRadius: "24px",
+            bgcolor: "rgba(255,255,255,0.08)",
+            width:"65%",
+            height:"400px",
+          }}
+          
+        />
+      )}
+
+      {result && (
+        <div className={styles.resultCard}>
+
+          <div className={styles.resultText}>
+            ATS Match Score
+          </div>
+
+          <div className={styles.circleWrapper}>
+
+            <div
+              className={styles.circle}
+              style={{
+                background: `conic-gradient(${getColor(result.score)} ${result.score * 3.6}deg, #2a2a40 0deg)`
+              }}
+            >
+
+              <div className={styles.innerCircle}>
+                {result.score}%
+              </div>
+
+            </div>
+
+          </div>
+
+          <div className={styles.feedback}>
+
+            <h4 className={styles.heading}>
+              AI Feedback
+            </h4>
+
+            <div className={styles.description}>
+              {result?.feedback}
+              </div>
+          </div>
+
+        </div>
+      )}
+
+    </div>
+
+  </div>
+);
 };
 
 export default WithAuthHOC(DashBoard);

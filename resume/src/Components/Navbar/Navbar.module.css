@@ -130,7 +130,8 @@
 
 /* Arrow */
 .arrow {
-  font-size: 14px;
+  font-size: 26px;
+  padding-top: 4px;
   color: #aaa;
 }
 

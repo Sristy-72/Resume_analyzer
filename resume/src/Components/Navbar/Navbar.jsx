@@ -146,7 +146,7 @@ const Navbar = () => {
 
                 <div className={styles.profileName}>{userInfo?.name}</div>
 
-                <div className={styles.arrow}>v</div>
+                <div className={styles.arrow}>▾</div>
               </div>
 
               {showMenu && (

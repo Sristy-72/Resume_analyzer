@@ -1,5 +1,5 @@
 .admin{
-    height: 100vh;
+    min-height: 100vh;
      flex: 0.8;
      overflow: auto;
      padding: 50px;
@@ -11,7 +11,11 @@
     width: 100%;
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.cardblock > span{
+    width: 100% !important;
+    max-width: 100%;
 }
 .card{
     border-radius: 20px;
@@ -22,6 +26,7 @@
     background: rgba(255, 255, 255, 0.06);
     overflow: hidden;
     color: rgba(203, 213, 245, 0.9);
+    overflow-wrap: anywhere;
 }
 .perheading{
   text-align: center;

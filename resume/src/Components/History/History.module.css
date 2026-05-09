@@ -1,5 +1,5 @@
 .history{
-    height: 100vh;
+    min-height: 100vh;
      flex: 0.8;
      overflow: auto;
      padding: 50px;
@@ -11,7 +11,11 @@
     display: grid;
     gap: 20px;
     
-    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.cardblock > span{
+    width: 100% !important;
+    max-width: 100%;
 }
 .card{
     border-radius: 20px;
@@ -21,12 +25,17 @@
     background: rgba(255, 255, 255, 0.06);
     box-shadow: 0 10px 20px rgba(0, 0,0, 0.2);
     color: rgba(203, 213, 245, 0.9);
+    overflow-wrap: anywhere;
 }
 .perheading{
   text-align: center;
     font-size: 28px;
 }
 @media screen and (max-width:780px) {
+     .history{
+        padding: 24px 16px;
+     }
+
      .cardblock {
         grid-template-columns: 1fr;
      }

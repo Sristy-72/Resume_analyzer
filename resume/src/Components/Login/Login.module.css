@@ -12,11 +12,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
 .logincard{
     /* width: 350px;
     height: 120px; */
-    width: 30%;
+    width: min(420px, 100%);
     background-color: black;
     border-radius: 20px;
     color: aliceblue;
@@ -42,11 +44,28 @@
     gap: 20px;
     font-size: 22px;
     display: flex;
+    text-align: center;
 
 
 }
 @media screen and (max-width:780px){
-    .loginCard{
-        width:80%;
+    .logincard{
+        width:100%;
+    }
+
+    .googleBtn{
+        font-size: 18px;
+        gap: 12px;
+    }
+}
+
+@media screen and (max-width:380px){
+    .loginheading h1{
+        font-size: 28px;
+    }
+
+    .googleBtn{
+        font-size: 16px;
+        padding: 10px 8px;
     }
 }

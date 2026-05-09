@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
 }
 .heroSection {
   text-align: center;
@@ -15,7 +16,7 @@
 }
 
 .firstheading {
-  font-size: 64px;
+  font-size: clamp(38px, 7vw, 64px);
   font-weight: 700;
 
   color: white;
@@ -24,11 +25,13 @@
 }
 
 .secondheading {
-  font-size: 20px;
+  font-size: clamp(16px, 2.5vw, 20px);
 
   color: #cbd5e1;
 
   max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .uploadBox {
   width: 100%;
@@ -50,7 +53,7 @@
   gap: 25px;
 }
 .uploadHeading {
-  font-size: 36px;
+  font-size: clamp(28px, 5vw, 36px);
   font-weight: 700;
 
   color: white;
@@ -106,10 +109,14 @@
   font-size: 24px;
 
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .uploadCard p {
   color: #d1d5db;
+  max-width: 100%;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 input {
   display: none;
@@ -191,7 +198,7 @@ input {
   align-items: center;
 }
 .resultText {
-  font-size: 36px;
+  font-size: clamp(28px, 5vw, 36px);
   font-weight: 700;
 
   color: white;
@@ -271,4 +278,75 @@ input {
 .description{
     white-space: pre-wrap;
     color: white;
+    overflow-wrap: anywhere;
+}
+
+@media screen and (max-width: 760px) {
+  .DashBoard {
+    padding: 42px 16px;
+  }
+
+  .heroSection {
+    margin-bottom: 30px;
+  }
+
+  .uploadBox,
+  .resultCard {
+    padding: 26px 18px;
+    border-radius: 22px;
+  }
+
+  .uploadCard {
+    padding: 30px 16px;
+    border-radius: 20px;
+  }
+
+  .textArea {
+    min-height: 190px;
+    padding: 16px;
+  }
+
+  .Analyzebtn {
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .resultDashboard {
+    margin-top: 34px;
+  }
+
+  .circle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .innerCircle {
+    width: 108px;
+    height: 108px;
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .DashBoard {
+    padding: 34px 12px;
+  }
+
+  .uploadBox,
+  .resultCard {
+    padding: 22px 14px;
+    border-radius: 18px;
+  }
+
+  .uploadIcon {
+    font-size: 42px;
+  }
+
+  .uploadCard h3 {
+    font-size: 20px;
+  }
+
+  .heading {
+    font-size: 21px;
+  }
 }

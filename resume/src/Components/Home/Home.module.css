@@ -1,5 +1,6 @@
 .page {
   min-height: 100vh;
+  overflow-x: hidden;
   color: white;
   background: radial-gradient(
       900px 500px at 20% 0%,
@@ -48,7 +49,7 @@
 }
 
 .title {
-  font-size: 54px;
+  font-size: clamp(38px, 5vw, 54px);
   line-height: 1.05;
   margin: 0;
   font-weight: 800;
@@ -129,7 +130,8 @@
 .heroRight {
   display: flex;
   justify-content: flex-end;
-  width: 500px;
+  width: 100%;
+  min-width: 0;
   margin-top: 20px;
 }
 
@@ -162,6 +164,7 @@
   background: rgba(255, 255, 255, 0.02);
   border-radius: 24px;
   padding: 64px 28px;
+  box-sizing: border-box;
 }
 
 .sectionHead {
@@ -208,6 +211,7 @@
   color: rgba(203, 213, 245, 0.88);
   font-size: 14px;
   line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
 .steps {
@@ -241,6 +245,7 @@
   color: rgba(203, 213, 245, 0.88);
   font-size: 14px;
   line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
 .faqs {
@@ -269,6 +274,11 @@
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
+}
+
+.faqQ span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .faqQ:hover {
@@ -329,6 +339,7 @@
   margin-top: 6px;
   color: rgba(203, 213, 245, 0.9);
   font-size: 14px;
+  line-height: 1.5;
 }
 
 .ctaBtn {
@@ -342,10 +353,12 @@
   .hero {
     grid-template-columns: 1fr;
     padding-top: 46px;
+    gap: 28px;
   }
 
   .heroRight {
-    justify-content: flex-start;
+    justify-content: center;
+    margin-top: 0;
   }
 
   .grid {
@@ -357,9 +370,39 @@
   }
 }
 
+@media (max-width: 720px) {
+  .section,
+  .sectionAlt {
+    padding: 46px 0;
+  }
+
+  .sectionAlt {
+    padding: 46px 18px;
+    border-radius: 18px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .ctaInner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ctaBtn {
+    width: 100%;
+  }
+}
+
 @media (max-width: 520px) {
+  .page {
+    padding-bottom: 46px;
+  }
+
   .hero {
     width: calc(100% - 32px);
+    padding: 34px 0 28px;
   }
 
   .section,
@@ -369,10 +412,59 @@
   }
 
   .title {
-    font-size: 40px;
+    font-size: 36px;
   }
 
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+  }
+
+  .trustRow {
+    gap: 8px;
+  }
+
+  .dot {
+    display: none;
+  }
+
+  .heroCard {
+    border-radius: 18px;
+    padding: 8px;
+  }
+
+  .heroCard img {
+    border-radius: 12px;
+  }
+
+  .sectionHead {
+    margin-bottom: 20px;
+  }
+
+  .card,
+  .stepCard {
+    padding: 16px;
+  }
+
+  .faqQ {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  .faqA {
+    padding: 0 14px 14px;
+  }
+
+  .ctaInner {
+    border-radius: 18px;
+    padding: 16px;
   }
 }

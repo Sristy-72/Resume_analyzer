@@ -20,7 +20,7 @@ const Home = () => {
   const handleAnalyzeClick = (event) => {
     if (!isLogin) {
       event.preventDefault();
-      alert("Please login first");
+      
       navigate("/login");
     }
   };

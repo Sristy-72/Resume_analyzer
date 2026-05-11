@@ -38,8 +38,7 @@ const Navbar = () => {
     closeMenus();
 
     if (!isLogin) {
-      event.preventDefault();
-      alert("Please login first");
+      event.preventDefault();      
       navigate("/login");
     }
   };
@@ -190,9 +189,15 @@ const Navbar = () => {
                 Login
               </Link>
 
-              <Link to="/" className={styles.getStartedBtn} onClick={closeMenus}>
+              <Link to="/home#how-it-works" className={ styles.getStartedBtn } onClick={() => {
+              closeMenus();
+              if (location.pathname === "/home") {
+                scrollToSection("how-it-works");
+              }
+            }}>
                 Get Started
               </Link>
+              
             </>
           )}
         </div>

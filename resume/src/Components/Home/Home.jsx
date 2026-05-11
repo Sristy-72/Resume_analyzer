@@ -21,7 +21,7 @@ const Home = () => {
     if (!isLogin) {
       event.preventDefault();
       alert("Please login first");
-      navigate
+      navigate("/login");
     }
   };
 
@@ -146,6 +146,8 @@ const Home = () => {
             <div className={styles.trustItem}>Fast feedback</div>
             <div className={styles.dot} />
             <div className={styles.trustItem}>ATS-friendly</div>
+            <div className={styles.dot} />
+            <div className={styles.trustItem}>Secured data</div>
           </div>
         </div>
 

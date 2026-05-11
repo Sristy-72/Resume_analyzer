@@ -35,7 +35,7 @@ const WithAuthHOC = (WrappedComponent) => {
     const { isLogin } = useContext(AuthContext);
 
     if (!isLogin) {
-      return <Navigate to="/home" replace />;
+      return <Navigate to="/login" replace />;
     }
 
     return <WrappedComponent {...props} />;

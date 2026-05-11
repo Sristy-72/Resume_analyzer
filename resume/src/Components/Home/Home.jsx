@@ -45,7 +45,7 @@ const Home = () => {
       {
         title: "Privacy Friendly",
         description:
-          "Only your feedback is shown - your resume file is not displayed back in the UI.",
+          "Only your feedback is shown - your resume file is not stored anywhere.",
       },
     ],
     []

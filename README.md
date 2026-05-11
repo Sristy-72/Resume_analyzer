@@ -33,6 +33,7 @@ It provides a resume match score, personalized feedback, and improvement suggest
 - History section showing all past analyses for a user  
 - Admin dashboard showing all uploaded resumes  
 - Logout functionality for secure session handling  
+- Full Data Privacy ( we Don't store your resume)
 
 ---
 
@@ -54,25 +55,14 @@ It provides a resume match score, personalized feedback, and improvement suggest
    View your previous resume analyses and reports.
 
 6. **Admin Page**  
-   Admin users can view all resumes uploaded by all users.
+   Admin users can view all resumes feedback(not the resume) uploaded by all users.
 
 7. **Logout**  
    Safely log out from the application.
 
 ---
 
-## Screenshots
 
-### Login Page
-![Login Page](./loginpg.png)
-
-### Dashboard Page
-![Dashboard Page](./dashboardpg.png)
-
-### Result after Analysis
-![Score and Feedback](./score.png)
-
----
 
 ## Installation and Setup
 

@@ -68,8 +68,8 @@ It provides a resume match score, personalized feedback, and improvement suggest
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Sristy-72/Smart-Resume-Screening.git
-cd Smart-Resume-Screening
+git clone https://github.com/Sristy-72/Resume_analyzer.git
+cd Resume_analyzer
 
 ```
 ---
